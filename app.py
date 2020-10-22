@@ -11,6 +11,10 @@ db = pymysql.connect("us-cdbr-east-02.cleardb.com", "b9f8d376f99bb0",
 
 cursor = db.cursor()
 
+class User:
+    def __init__(self,username,password):
+        self.username=username
+        self.password=password
 
 @app.route("/")
 def index():
