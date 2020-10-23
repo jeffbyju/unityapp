@@ -11,14 +11,17 @@ cors = CORS(app)
 app.logger.addHandler(logging.StreamHandler(sys.stdout))
 app.logger.setLevel(logging.ERROR)
 
-db = pymysql.connect("us-cdbr-east-02.cleardb.com", "b9f8d376f99bb0","8e6fda48", "heroku_3e48eb031aa9cd3")
+db = pymysql.connect("us-cdbr-east-02.cleardb.com",
+                     "b9f8d376f99bb0", "8e6fda48", "heroku_3e48eb031aa9cd3")
 
 cursor = db.cursor()
 
+
 class User:
-    def __init__(self,username,password):
-        self.username=username
-        self.password=password
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
 
 @app.route("/")
 def index():
@@ -30,10 +33,10 @@ def index():
         Id, username, password = users[i]
         user = User(username, password)
         Users.append(user.__dict__)
-        #json.dumps(user,indent=4,cls=UserEncoder)
+        # json.dumps(user,indent=4,cls=UserEncoder)
     return json.dumps(Users)
     # return jsonify(data=cursor.fetchall())
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
