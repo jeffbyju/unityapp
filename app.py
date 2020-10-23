@@ -33,7 +33,6 @@ def index():
         Id, username, password = users[i]
         user = User(username, password)
         Users.append(user.__dict__)
-        # json.dumps(user,indent=4,cls=UserEncoder)
     return json.dumps(Users)
     # return jsonify(data=cursor.fetchall())
 
